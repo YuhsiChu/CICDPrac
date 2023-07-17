@@ -26,3 +26,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: build-image
+      run: |
+        docker build -t cicd .
+        docker run -d -p 8888:80 --name c8763 cicd
